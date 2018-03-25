@@ -7,7 +7,11 @@ var apiKey = "DA5Yp0Ah8i732V4OOBtiVOGYwjDGmHuT";
 //Sets search terms to be initially loaded the page. 
 var topics = ["batman", "wonder woman", "superman", "spiderman", "iron man", "thor", "hulk", "black widow", "captain america", "black panther"]; 
 
-//sets url to query as part of GET.
+//Additional API search variables need per documentation
+var limit = '&limit=20',
+    rating = '&rating=PG',
+
+    //sets url to query as part of GET.
 var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topics[0] + "&api_key=" + apiKey + "&limit=10"; 
 
 
@@ -35,8 +39,13 @@ $.ajax({
 
 
 
-
 /*
+fixed_width - Width set to 200px. Good for mobile use.
+fixed_width_still - Static preview image for fixed_width
+original - Original file size and file dimensions. Good for desktop use.
+original_still - Preview image for original
+
+
 
 2. Your app should take the topics in this array and create buttons in your HTML.
    * Try using a loop that appends a button for each string in the array.

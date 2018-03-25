@@ -1,49 +1,44 @@
 //Establishes initial array of topics displayed
-var topicsArray = ["batman", "wonder woman", "superman", "spiderman", "iron man", "thor", "hulk", "black widow", "captain america", "black panther"];
+var topicsArray = ["the flash", "batman", "superman", "aquaman", "cyborg", "wonder woman"],
+    queryDOM = $('#query'), // a shorthand way to assign the query ID in the DOM to a variable 
+    newDiv = $("<div>");
 
-//adds buttons to DOM using JQuery
+//Eventlistener that adds buttons to DOM using JQuery
 $('#add').on("click", function (event) {
-    event.preventDefault();
-    let queryText = $('#query');
-    let userInput = queryText.val().trim();
-    userInput = userKey.toLowerCase();
-    if (userInput !== "" && topicsArray.indexOf(userInput) == -1) {
-        topicsArray.push(queryText.val());
+    event.preventDefault(); //Standard code needed for dealing with APIs
+    var inputValue = queryDOM.val().trim(); //captures the value of the input entered by the user and converts it to a searchable term to send to the API
+    newSearch = inputValue.toLowerCase(); // Assigns the inputValue in lowercase format to newSearch variable 
+    if (newSearch !== "" && topicsArray.indexOf(newSearch) == -1) {
+        topicsArray.push(queryDOM.val());
         drawButtons();
     }
 
     //clears the text field
-    $('#query').val("");
+    queryDOM.val("");
 });
 
-//draws buttons
+//Function to draw draws buttons
 function drawButtons() {
-    $('#btns').empty();
-    for (let i = 0; i < topicsArray.length; i++) {
-       const element = topicsArray[i];
-        $('<button>').val(element).html(element.toUpperCase()).on("click", function () {
-            let search = buildQuery(this.value, "search");
-            newGifs(search);
-
-        });
-        $('<button>').appendTo('#btns');
+    buttonsID = $('#btns'),
+        buttonsID.empty();
+    for (let index = 0; index < topicsArray.length; index++) {
+        var element = topicsArray[index];
+        newButtons = $('<button>'),
+            newButtons.val(element).html(element.toUpperCase()).on("click", function () {
+                var search = queryAPI(this.value, "search");
+                newGifs(search);
+            });
+        newButtons.appendTo('#btns');
 
     }
 }
-//deletes the last button
-$('#delete').on("click", function (event) {
-    event.preventDefault();
-    topicsArray.pop();
-    drawButtons();
-});
 
 //sets query URL for API search
-function buildQuery(searchTerm, type) {
+function queryAPI(searchTerm, type) {
     var apiKey = "&api_key=DA5Yp0Ah8i732V4OOBtiVOGYwjDGmHuT",
-        limit = '&limit=20',
-        rating = '&rating=PG',
-        offset = '&offset=' + Math.floor(Math.random() * 100);
-    //in case I want to change my query to a random instead of search later
+        limit = '&limit=10',
+        rating = '&rating=G',
+        offset = '&offset=' + Math.floor(Math.random() * 100);;
     if (type === "search") {
         return 'https://api.giphy.com/v1/gifs/search?q=' + searchTerm + apiKey + limit + offset + rating;
     }
@@ -62,28 +57,42 @@ function newGifs(queryURL) {
 
             for (i = 0; i < response.data.length; i++) {
 
-                $('<img>').attr("src", response.data[i].images.fixed_height_still.url)
-                $('<img>').attr("data-still", response.data[i].images.fixed_height_still.url)
-                $('<img>').attr("data-animate", response.data[i].images.fixed_height.url)
-                $('<img>').attr("data-state", "still");
-                $('<img>').on("click", function () {
-                    dataState = $(this).attr("data-state");
+                img = $('<img>');
+                img.attr("src", response.data[i].images.fixed_height_still.url)
+                img.attr("data-still", response.data[i].images.fixed_height_still.url)
+                img.attr("data-animate", response.data[i].images.fixed_height.url)
+                img.attr("data-state", "still");
+                img.on("click", function () {
+                    var thisImg = $(this);
+                    var dataState = thisImg.attr("data-state");
                     if (dataState === "still") {
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
+                        thisImg.attr("src", thisImg.attr("data-animate"));
+                        thisImg.attr("data-state", "animate");
                     } else {
-                        $(this).attr("src", $(this).attr("data-still"));
-                        $(this).attr("data-state", "still");
+                        thisImg.attr("src", thisImg.attr("data-still"));
+                        thisImg.attr("data-state", "still");
                     }
                 });
-                $('<div>').css("width", response.data[i].images.fixed_height.width);
-                $('<div>').addClass("imgBox");
-                $('<div>').html("<p>Rating: " + response.data[i].rating + "</p>").append(img);
-                $('<div>').prependTo('#gif-results');
+
+                newDiv.css("width", response.data[i].images.fixed_height.width); //Adds CSS to format image width
+                newDiv.addClass("giphyBox"); //Adds "giphyBox" class to new image
+                 //handle no title
+                 let title = response.data[i].title;
+                 if(title === "") {
+                     title = "<span style='color:red'>No Title Available</span>";
+                 }
+                 //handle no rating
+                 let rating = response.data[i].rating.toUpperCase()
+                 if(rating === "") {
+                     rating = "<span style='color:red'>Unrated</span>";
+                 }
+                 
+                newDiv.html("<p>Rating: " + response.data[i].rating + "</p>").append(img);//Adds Ratings information to DOM along with image
+                newDiv.prependTo('#gif-results'); //inserts 
                 console.log(response)
             }
         }
-    }); 
+    });
 }
 
 //adds initial buttons

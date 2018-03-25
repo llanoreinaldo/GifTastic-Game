@@ -21,7 +21,6 @@ form {
 }
 
 .container-fluid {
-
     width: 100%;
     display: inline-block;
     min-height: 100px;
@@ -33,7 +32,6 @@ form {
     padding: 20px 0;
     text-align: center;
     max-width: 60%;
-    
 }
 
 .btns>button {
@@ -49,13 +47,12 @@ form {
 }
 
 form {
-    
     min-width: 300px;
     margin-top: 10px;
     margin-right: 8%;
 }
 
-.imgBox {
+.giphyBox {
     box-sizing: border-box;
     float: left;
     margin: 2px;
@@ -67,18 +64,18 @@ form {
     border: 5px #6f6f6f solid;
 }
 
-.imgBox>img {
+.giphyBox>img {
     max-width: 300px;
     display: block;
     margin: auto;
 }
 
-.imgBox>p:nth-child(2) {
+.giphyBox>p:nth-child(2) {
     border-bottom: 2px #9e9696 solid;
     margin-bottom: 5px;
 }
 
-.imgBox>p {
+.giphyBox>p {
     padding: 5px 0;
 }
 
