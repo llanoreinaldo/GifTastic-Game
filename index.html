@@ -19,12 +19,11 @@
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <br>
-       
         <img class="img-fluid rounded float-right" src="assets/images/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif" alt="Powered by Giphy Logo">
-         <br>
-         <br>
+        <br>
+        <br>
         <div class="jumbotron">
             <h1>Welcome to My GiftTastic Site!</h1>
             <hr>
@@ -33,24 +32,31 @@
     </div>
 
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="btns" id="btns"></div>
+        <br>
+    </div>
+
+    <br>
+    <div class="container">
         <form>
-            Make a Gif Button:
+            <strong> ADD YOUR OWN GIF BUTTON:</strong>
             <br>
-            <input type="text" name="query" id="query" />
-            <button id="add">Add</button>
-            <br>
-            <button id="clear">Clear Gifs</button>
-            <button id="delete">Delete</button>
+            <input type="text" name="query" id="query" placeholder=" ENTER A SEARCH WORD" />
+            <button id="add">Add Gif</button>
+
+            <button id="clear">Clear Gif</button>
+            <button id="delete">Delete Gift</button>
         </form>
+
     </div>
 
-    <div class="content">
-        <div class="gif-results" id="gif-results"></div>
+    <div class="container-fluid">
+        <div class="content">
+            <div class="gif-results" id="gif-results"></div>
+        </div>
     </div>
-
 
     <!-- Optional JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

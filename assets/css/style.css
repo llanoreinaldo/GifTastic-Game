@@ -1,5 +1,6 @@
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: black;
 }
 
 .jumbotron {
@@ -14,16 +15,15 @@ form {
     color: white
 }
 
-
 .content {
     max-width: 1400px;
     margin: auto;
 }
 
-.container {
-    background-color: black;
+.container-fluid {
+
     width: 100%;
-   display: inline-block;
+    display: inline-block;
     min-height: 100px;
 }
 
@@ -33,21 +33,23 @@ form {
     padding: 20px 0;
     text-align: center;
     max-width: 60%;
-  
+    
 }
 
 .btns>button {
     float: left;
     display: block;
-   
+    background-color: white;
+    color: black;
 }
 
 #query {
-    height: 24px;
+    height: 45px;
+    width: 306px
 }
 
 form {
-    float: right;
+    
     min-width: 300px;
     margin-top: 10px;
     margin-right: 8%;
@@ -83,15 +85,14 @@ form {
 button {
     padding: 8px;
     min-width: 100px;
-    background-color: rgb(45, 143, 189);
-    color: rgb(220, 221, 220);
+    background-color: white;
+    color: black;
     font-family: inherit;
     font-weight: bolder;
 }
 
 .gif-results {
     clear: both;
-    /* max-width: 1000px; */
 }
 
 /*footer*/
