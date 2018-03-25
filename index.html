@@ -5,42 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic Game</title>
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+
     <!--CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 
-    <title>Rutgers Info Widget </title>
+
 
 </head>
 
 <body>
 
-    <div id="giphybuttons">
-
+    <div class="container">
+        <br>
+       
+        <img class="img-fluid rounded float-right" src="assets/images/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif" alt="Powered by Giphy Logo">
+         <br>
+         <br>
+        <div class="jumbotron">
+            <h1>Welcome to My GiftTastic Site!</h1>
+            <hr>
+            <h2>Feel free to click on my favorite GIFs and also add your own.</h2>
+        </div>
     </div>
 
 
-    <form id="giphyform">
-        <label for="giphy-input">Add an image of your favorite thing</label>
-        <input id="addImage" type="submit" value="Submit">
-    </form>
+    <div class="container">
 
-    <div id="gifphyimage">
-
+        <div class="btns" id="btns"></div>
+        <form>
+            Make a Gif Button:
+            <br>
+            <input type="text" name="query" id="query" />
+            <button id="add">Add</button>
+            <br>
+            <button id="clear">Clear Gifs</button>
+            <button id="delete">Delete</button>
+        </form>
     </div>
+
+    <div class="content">
+        <div class="gif-results" id="gif-results"></div>
+    </div>
+
 
     <!-- Optional JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script rel="text/javascript" src="assets/javascript/gifapp.js"></script>
+    <script rel="text/javascript" src="assets/javascript/javatest.js"></script>
 
 </body>
+<footer>
+    &copy; Copyright 2018 Reinaldo Llano, Jr.
+</footer>
 
 </html>
