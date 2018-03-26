@@ -11,10 +11,6 @@ hr {
     background-color: black;
 }
 
-form {
-    color: white
-}
-
 .content {
     max-width: 1400px;
     margin: auto;
@@ -50,18 +46,20 @@ form {
     min-width: 300px;
     margin-top: 10px;
     margin-right: 8%;
+    color: white
 }
 
 .giphyBox {
     box-sizing: border-box;
     float: left;
     margin: 2px;
-    max-width: 310px;
-    min-width: 320px;
-    min-height: 325px;
+    max-width: 400px;
+    min-width: 350px;
+    min-height: 300px;
     padding: 0 5px;
-    background-color: #ccccda;
+    background-color:white;
     border: 5px #6f6f6f solid;
+    font-weight: 700 
 }
 
 .giphyBox>img {
