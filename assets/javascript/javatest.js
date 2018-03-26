@@ -61,7 +61,7 @@ function newGifs(queryURL) {
                      rating = "<span style='color:red'>Unrated</span>";
                  }
                  
-                newDiv.html("<p>Rating: " + response.data[i].rating + "</p>").append(img);//Adds Ratings information to DOM along with image
+                newDiv.html("<p>Title: " + title + "</p><p>Rating: " + rating + "</p>").append(img);//Adds Ratings information to DOM along with image
                 newDiv.prependTo('#gif-results'); //inserts 
                
             }
