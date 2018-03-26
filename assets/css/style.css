@@ -10,15 +10,16 @@ hr {
     background-color: black;
 }
 
-.content {
-    margin: auto;
-}
-
 .container-fluid {
     width: 100%;
     display: inline-block;
     min-height: 100px;
 }
+
+.content {
+    margin: auto;
+}
+
 
 .btns {
     float: left;
@@ -102,20 +103,10 @@ footer {
     text-align: center;
 }
 
-@media screen and (max-width: 1200px) {
-    form {
-        margin-right: 0;
-    }
-}
-
 @media screen and (max-width: 1000px) {
-    header {
-        display: grid;
-    }
+  
     .btns {
         min-width: 100%;
     }
-    form {
-        margin: auto;
-    }
+   
 }
