@@ -1,6 +1,8 @@
 //Establishes initial array of topics displayed
 var topicsArray = ["the flash", "batman", "superman", "aquaman", "cyborg", "wonder woman"],
-    queryDOM = $('#query'), // a shorthand way to assign the query ID in the DOM to a variable 
+    newTopics = []
+queryDOM = $('#query'), // a shorthand way to assign the query ID in the DOM to a variable 
+    newButtons = $('<button>'),
     newDiv = $("<div>");
 
 
@@ -23,7 +25,6 @@ function newGifs(queryURL) {
         method: 'GET'
     }).then(function (response) {
         console.log(response);
-
 
         if (response.data.length > 0) {
 
@@ -76,14 +77,14 @@ function newGifs(queryURL) {
 //Eventlistener that adds buttons to DOM using JQuery
 $('#add').on("click", function (event) {
     //Standard code needed for dealing with APIs
-    event.preventDefault(); 
+    event.preventDefault();
 
     var inputValue = queryDOM.val().trim(); //captures the value of the input entered by the user and converts it to a searchable term to send to the API
     newSearch = inputValue.toLowerCase(); // Assigns the inputValue in lowercase format to newSearch variable 
 
     //checks to see if new search is already in the array. If it does not exist, then it will create a new button.
     if (newSearch !== "" && topicsArray.indexOf(newSearch) == -1) {
-        topicsArray.push(queryDOM.val());
+        newTopics.push(queryDOM.val());
         drawButtons();
     }
 
@@ -91,23 +92,46 @@ $('#add').on("click", function (event) {
     queryDOM.val("");
 });
 
-//Function to draw draws buttons
+//Function to draw buttons
 function drawButtons() {
     buttonsID = $('#btns'), //sets value that hooks into btns ID in the DOM to buttonsID
-        buttonsID.empty();//Empty's the #btns in the DOM
+        buttonsID.empty(); //Empty's the #btns in the DOM
 
     for (let index = 0; index < topicsArray.length; index++) {
         var element = topicsArray[index];
+        newButtons = $('<button>'),
+            newButtons.val(element).addClass('original').html(element.toUpperCase()).on("click", function () {
+                var search = queryAPI(this.value, "search");
+                newGifs(search);
+                backgroundChange();
+            });
+        newButtons.appendTo('#btns');
+
+
+    }
+    for (let index = 0; index < newTopics.length; index++) {
+        var element = newTopics[index];
         newButtons = $('<button>'),
             newButtons.val(element).html(element.toUpperCase()).on("click", function () {
                 var search = queryAPI(this.value, "search");
                 newGifs(search);
             });
         newButtons.appendTo('#btns');
-
     }
 }
 
-
 //adds the initial buttons on launch of site
 drawButtons();
+
+
+//Changes background if you click an original button
+function backgroundChange() {
+    $(".original").on("click", function (event) {
+        var value = $(this).attr('value')
+        console.log(value);
+        $('body').css('background-image', 'url(assets/images/' + value + ' background.jpg)');
+        $('body').css('background-color', 'none');
+        
+    })
+
+}
