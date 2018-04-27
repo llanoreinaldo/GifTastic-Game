@@ -122,14 +122,14 @@ function drawButtons() {
 
 //adds the initial buttons on launch of site
 drawButtons();
-
+backgroundChange();
 
 //Changes background if you click an original button
 function backgroundChange() {
     $(".original").on("click", function (event) {
         var value = $(this).attr('value')
         console.log(value);
-        $('body').css('background-image', 'url(assets/images/' + value + ' background.jpg)');
+        $('body').css('background-image', 'url("assets/images/' + value + ' background.jpg")');
         $('body').css('background-color', 'none');
         
     })
